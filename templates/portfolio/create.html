@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{% block title%} Upload {%endblock%}
+
+
+{% block content %}
+	<div style= 'margin-top:70px '>
+	<div class="container" >
+		<div class="card text-center">
+	  		<div class="card-header">
+	    		Upload Here
+	  		</div>
+		  <form method="POST" enctype="multipart/form-data" >
+			    	{%csrf_token%}
+			    	
+					<div class="form-group">
+					  		<br><br>
+					    <div class="row" >
+							<div class="col-md-12">
+					    		<div class="custom-file mb-3">
+					      <input type="file" class="custom-file-input" id="customFile" name="Profile">
+					      <label class="custom-file-label" for="customFile">Choose file</label>
+					    		</div>
+					  		</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+			  						<label for="formGroupExampleInput">Title</label>
+			    					<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title" name='title' >
+			  					</div>
+		   					</div>
+						</div>
+						<div class="form-group">
+						    <label for="exampleFormControlTextarea1">Description</label>
+						    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter a Description" name='desc'></textarea>
+						 </div>
+
+
+					</div>
+
+		    	<button type="submit" class="btn btn-primary">Submit</button><br><br>
+
+		    </form>
+	  
+			</div>
+			
+		</div>
+	</div>
+{%endblock%}

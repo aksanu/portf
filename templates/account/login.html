@@ -1,0 +1,38 @@
+{%extends 'base.html' %}
+
+{%block title%} Login {%endblock%}
+
+{% block content%}
+	<div class="container" >
+	{% if messages %}
+		{% for message in messages %}
+		{{ message }}
+	{% endfor %}
+		
+	{% endif %}
+	<form method="POST" accept-charset="utf-8">
+		{% csrf_token%}
+		<div class="row">
+			<div class="col-md-6">
+			  <div class="form-group">
+			    <label for="formGroupExampleInput" class='lab'>Username</label>
+			    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Username" name='username' required>
+			  </div>
+		   	</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+			  	<div class="form-group">
+			    	<label for="exampleInputPassword1" class='lab'>Password</label>
+			    	<input type="password" class="form-control" id="exampleInputPassword1" name='pass1' placeholder="Enter Password" required>
+		  		</div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+
+	</form>
+
+	</div>
+
+{% endblock%}

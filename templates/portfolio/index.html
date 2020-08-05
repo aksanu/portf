@@ -1,0 +1,97 @@
+{% extends 'base.html'%}
+{%load static%}
+
+{% block title%} {%endblock%}
+
+
+{% block content %}
+	<main role="main">
+
+		  <section class="jumbotron text-center">
+		    <div class="container">
+        
+          
+            <h1 class="jumbotron-heading lead text-muted" id='special' >It's Me Aditya Aman.</h1>
+       
+           <div class="container py-5">
+            <div class="output" id="output">
+              <h1 class="cursor"></h1>
+              <p></p>
+            </div>
+          </div>
+		     
+		      <p>
+		        <img class="img-fluid" src="{% static 'lion.jpg' %}" width="30%" height="30%">
+		               
+		      </p>
+		      <a href="" class="btn btn-primary my-2">Contact me</a>
+		    </div>
+		  </section>
+
+		  <div class="album py-5 bg-light">
+    <div class="container rounded">
+        <div class="row">
+        
+        {% for img in image %}
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                <img class="img-fluid" src="{{img.images.url}}" height="100%">
+
+                {% if user.is_authenticated %}
+                 
+                  <div class="card-body bg-light">
+                   <p>  {{img.description|truncatewords:10}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    	  
+                      <div class="btn-group">
+                        <a href="{% url 'detail' img.id%}" class="btn btn-sm btn-outline-secondary">More</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary">Change</a>
+                        <a href="" class="btn btn-sm btn-outline-secondary">Delete</a>
+                           
+                      </div>
+                      
+                    </div>
+                  </div>  
+                  {%else%}
+                  <div class="card-body bg-light">
+                    <p>  {{img.description|truncatewords:10}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                    	
+                      <div class="btn-group">
+                      
+                        
+                        <a href="{% url 'detail' img.id%}" class="btn btn-sm btn-outline-secondary">More</a>
+                           
+                      </div>
+                      
+                    </div>
+                  </div>  
+
+                {% endif %}
+                  
+                
+                </div>
+            </div>
+            
+        {% endfor %}
+                  
+        </div>           
+      
+    </div>
+  </div>
+
+</main>
+<div >
+  <footer class="text-muted footer" >
+
+
+    <div class="container text-center">
+          <p>&copy; Aditya {% now 'Y' %}</p>
+          <p>Developed by <a href="#">AksWeb</a></p>
+    </div>
+  </footer>
+
+</div>
+
+{%endblock%}
